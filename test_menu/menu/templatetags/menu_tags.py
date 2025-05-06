@@ -70,8 +70,9 @@ def find_active_item(tree, current_path):
     """Находит активный пункт меню."""
     for node in tree:
         item = node['item']
-        url = item.get_url() # or reverse(item.named_url) if item.named_url else None
-        if url == current_path:
+        url = item.get_url()
+        named_url = item.get_named_url()
+        if url == current_path or named_url == current_path:
             return item
         active_child = find_active_item(node['children'], current_path)
         if active_child:

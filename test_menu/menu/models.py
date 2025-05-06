@@ -19,12 +19,15 @@ class MenuItem(models.Model):
         verbose_name = "Пункт меню"
         verbose_name_plural = "Пункты меню"
 
+    # def get_url(self):
+    #     if self.named_url:
+    #         from django.urls import reverse
+    #         return reverse(self.named_url)
+    #     return self.url or '#'
     def get_url(self):
-        if self.named_url:
-            from django.urls import reverse
-            return reverse(self.named_url)
         return self.url or '#'
-
+    def get_named_url(self):
+        return self.named_url
     def __str__(self):
         return self.name
 
